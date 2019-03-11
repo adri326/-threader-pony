@@ -10,10 +10,6 @@ actor Main
     @printf[None]("C - 🐱\n".cpointer())
 
   fun @fn() =>
-    // register the thread (this does not seem to change anything)
-    @printf[None]("B'' - 🐼\n".cpointer())
-    @pony_register_thread[None]()
-
     @printf[None]("D - 🐶\n".cpointer())
     let ball = Ball
 

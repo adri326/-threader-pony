@@ -13,18 +13,18 @@ void create_thread() {
     return;
   }
   pthread_detach(t);
-  // if (pthread_join(t, NULL)) {
-  //   printf("Error while trying to join thread!\n");
-  //   return;
-  // }
 }
 
 void* thread_entry(void *param) {
   printf("B' - 🦓\n");
+  pony_register_thread();
   if (pony_fn == NULL) {
     printf("No callback registered?\n");
   } else {
     pony_fn();
   }
+#ifdef THREADER_EXIT
+  pony_unregister_thread();
   pthread_exit(NULL);
+#endif
 }
